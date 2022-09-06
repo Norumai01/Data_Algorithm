@@ -4,7 +4,7 @@
 #include <vector>
 
 int sumArrayRec(std::vector<int>& vec) {
-
+    return -1;  // False Answer
 }
 
 int sumArrayIter(std::vector<int>& vec) {
@@ -18,6 +18,7 @@ int sumArrayIter(std::vector<int>& vec) {
     for (auto& e : vec) {
         sum += e;
     }
+    return sum;
     */
 }
 
