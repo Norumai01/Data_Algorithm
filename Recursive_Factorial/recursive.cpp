@@ -2,7 +2,7 @@
 
 int recursiveFactorial(int n) {
     if (n == 0) return 1;
-    else n * recursiveFactorial(n-1);
+    else return n * recursiveFactorial(n-1);
 }
 
 int iterativeFactorial(int n) {
