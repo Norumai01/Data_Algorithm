@@ -7,6 +7,13 @@ int recursivePower(int n, int m) {
     else {
         return n * recursivePower(n,m-1);
     }
+    /* 
+    Testing Partial Product    // Comment else statement if testing.
+    std::cout << "m: " << m << std::endl;
+    int prod = n * recursivePower(n,m-1);
+    std::cout << "Partial Product: " << prod << endl;
+    return prod;
+    */
 }
 
 int iterativePower(int n, int m) {
