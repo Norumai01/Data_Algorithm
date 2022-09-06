@@ -4,7 +4,15 @@
 #include <vector>
 
 int sumArrayRec(std::vector<int>& vec) {
-    return -1;  // False Answer
+    if (vec.size() == 1) {
+        return vec.at(vec.size()-1);
+    }
+    else {
+        int sum = vec.at(vec.size()-1);
+        vec.pop_back();
+        sumArrayRec(vec);
+        return sum; 
+    }
 }
 
 int sumArrayIter(std::vector<int>& vec) {
