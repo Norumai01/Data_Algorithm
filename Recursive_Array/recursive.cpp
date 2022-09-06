@@ -4,14 +4,14 @@
 #include <vector>
 
 int sumArrayRec(std::vector<int>& vec) {
-    if (vec.size() == 1) {
-        return vec.at(vec.size()-1);
+    if (vec.size() == 0) {
+        return {};    // Return empty vector. 
     }
-    else {
-        int sum = vec.at(vec.size()-1);
+    else {      // Need fixing.
+        int sum_2 = vec.at(vec.size()-1);
         vec.pop_back();
         sumArrayRec(vec);
-        return sum; 
+        return sum_2; 
     }
 }
 
