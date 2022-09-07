@@ -92,19 +92,23 @@ void SLinkedList<T>::removeFront() { // Remove node from front
 
 template <typename T>
 void concat(SLinkedList<T>& l1, SLinkedList<T>& l2, SLinkedList<T>& lout) {
-// Your code here
-    SLinkedList<T> temp;
-	while (!l1.empty()) {
-		temp.addFront(l1.front());
-		l1.removeFront();
+    SLinkedList<T> tempLink;
+	// Traverse through l1...
+	SNode<T>* temp = l1.head;
+	while (temp != nullptr) {
+		tempLink.addFront(temp->elem);
+		temp = temp->next;
 	}
-	while (!l2.empty()) {
-	    temp.addFront(l2.front());
-	    l2.removeFront();
+	// Traverse through l2...
+	temp = l2.head;
+	while (temp != nullptr) {
+    	tempLink.addFront(temp->elem);
+		temp = temp->next;
 	}
-	while (!temp.empty()) {
-	    lout.addFront(temp.front());
-		temp.removeFront();
+	// Output in correct order.
+	while (!tempLink.empty()) {
+		lout.addFront(tempLink.front());
+		tempLink.removeFront();
 	}
 }
 
