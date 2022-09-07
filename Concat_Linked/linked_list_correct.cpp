@@ -17,7 +17,7 @@ template <typename T>
 class SNode {
 private:
 	T elem;
-	SNode<T>* next;
+	SNode<T>* next = nullptr;
 	friend SLinkedList<T>;
 	friend void concat<T>(SLinkedList<T>& l1, SLinkedList<T>& l2, SLinkedList<T>& lout); 
 
