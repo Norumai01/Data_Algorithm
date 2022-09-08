@@ -3,10 +3,6 @@
 #include <iostream>
 #include <vector>
 
-
-/*int sumArrayBinaryRec(std::vector<int>& vec) {
-    return sumArrayBinaryHelper(vec, 0, vec.size()-1);
-}*/
 // sum (1,7,3,4,8) = 3 + sum(1,7) + sum(4,8) --> Binary Recursion
 int sumArrayBinary(std::vector<int>& vec, int start, int stop) {
     int mid; 
