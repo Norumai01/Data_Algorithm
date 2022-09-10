@@ -10,7 +10,18 @@ Note: Your implementation has to be recursive. Zero points for non-recursive cod
 #include <string>
 
 bool isPalinHelper(std::string& s, int begin, int end) {
-	// Your code here
+	bool checker = true;   // Default to true
+    if (begin == end) {
+        return checker;	   // Return true, when size are equal accounts for one letter or odd word.
+    }
+    if (s[begin] != s[end]) {	 // If letter doesn't equal, will return false.   
+        checker = false;
+        return checker;
+    }
+    if (begin <= end) {
+        return isPalinHelper(s, begin+1, end-1);    // For even words, stop as begin's bypass end's counter. 
+    }
+    return checker;
 }
 
 bool isPalin(std::string& s) {
@@ -24,8 +35,7 @@ int main() {
 	std::string s2{"racecars"}; // Not a palindrome
 	if (isPalin(s2)) std::cout << s2 << " is a palindrome" << std::endl;
 	else std::cout << s2 << " is not a palindrome" << std:: endl;
-	std::string s3{"gohangasalamiimalasagnahog"};
+	std::string s3{"gohangasalamiimalasagnahog"}; // Palindrome
 	if (isPalin(s3)) std::cout << s3 << " is a palindrome" << std::endl;
 	else std::cout << s3 << " is not a palindrome" << std:: endl;
-
 }
