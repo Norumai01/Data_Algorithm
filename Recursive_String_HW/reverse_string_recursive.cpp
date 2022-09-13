@@ -14,7 +14,7 @@ bool isPalinHelper(std::string& s, int begin, int end) {
     if (begin == end) {
         return checker;	   // Return true, when size are equal. Accounts for one letter or odd words.
     }
-    if (s[begin] != s[end]) {	 // If letter doesn't equal, will return false.   
+    if (s[begin] != s[end]) {	 // If letter doesn't equal, will stop and return false.   
         checker = false;
         return checker;
     }
