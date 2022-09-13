@@ -12,14 +12,15 @@ Note: Your implementation has to be recursive. Zero points for non-recursive cod
 bool isPalinHelper(std::string& s, int begin, int end) {
 	bool checker = true;   // Default to true
     if (begin == end) {
-        return checker;	   // Return true, when size are equal accounts for one letter or odd word.
+        return checker;	   // Return true, when size are equal. Accounts for one letter or odd words.
     }
     if (s[begin] != s[end]) {	 // If letter doesn't equal, will return false.   
         checker = false;
         return checker;
     }
-    if (begin <= end) {
-        return isPalinHelper(s, begin+1, end-1);    // For even words, stop as begin's bypass end's counter. 
+    if (begin <= end) {                             // Continues the counter of begin and end till equal. 
+        return isPalinHelper(s, begin+1, end-1);    // For even words, stop as begin's bypass end's counter.
+        
     }
     return checker;
 }
