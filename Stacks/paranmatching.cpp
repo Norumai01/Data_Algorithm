@@ -12,11 +12,41 @@ using namespace std;
 // function to check if paranthesis are balanced 
 bool areParanthesisBalanced(string expr) { 
 // Your code here
-
-
-
-
-
+	stack<char> matching; 
+	for (int i = 0; i < expr.size(); i++) {
+		if (expr[i] == '(' || expr[i] == '{' || expr[i] == '[') {
+			matching.push(expr[i]);
+		}
+		else if (expr[i] == ')' || expr[i] == '}' || expr[i] == ']') {
+			if (matching.empty()) {
+				return false;
+			}
+			switch (matching.top()) {
+				case '(':
+					if (expr[i] == '}' || expr[i] == ']') {
+						return false;
+					}
+					break;
+				case '{':
+					if (expr[i] == ')' || expr[i] == ']') {
+						return false;
+					}
+					break;
+				case '[':
+					if (expr[i] == ')' || expr[i] == '}') {
+						return false;
+					}
+					break;
+			}
+			matching.pop();
+		}
+	}
+	if (matching.empty()) {
+		return true;
+	}
+	else {
+		return false;
+	}
 } 
   
 // Test - DO NOT MODIFY
