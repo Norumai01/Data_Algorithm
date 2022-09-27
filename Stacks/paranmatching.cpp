@@ -44,7 +44,7 @@ bool areParanthesisBalanced(string expr) {
 			matching.pop();
 		}
 	}
-	if (matching.empty()) {
+	if (matching.empty()) {	  // Every symbols was matched
 		return true;
 	}
 	else {
