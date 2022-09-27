@@ -18,7 +18,7 @@ bool areParanthesisBalanced(string expr) {
 	}
 	for (int i = 0; i < expr.size(); i++) {   // Loop through each character in the string.
 		if (expr[i] == '(' || expr[i] == '{' || expr[i] == '[') {
-			matching.push(expr[i]);   // Push into the stack.
+			matching.push(expr[i]);   
 		}
 		else if (expr[i] == ')' || expr[i] == '}' || expr[i] == ']') {
 			if (matching.empty()) {
@@ -44,7 +44,7 @@ bool areParanthesisBalanced(string expr) {
 			matching.pop();
 		}
 	}
-	if (matching.empty()) {	  // Every symbols was matched
+	if (matching.empty()) {	  // If every symbols was matched, return true.
 		return true;
 	}
 	else {
