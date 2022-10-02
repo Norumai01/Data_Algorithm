@@ -43,6 +43,40 @@ int main() {
 
 bool isAnagram(string s, string t) {
 // Your code here
+	unordered_map<char, int> container;
 
+	// Adds char-elements of the string s into the hash table. 
+	// If there's a copy, it will add one to the value of the key element. 
+	for (int i = 0; i < s.size(); i++) {
+		if (container.find(s[i]) == container.end()) {
+		    container.insert(make_pair(s[i], 1));
+		} 
+		else {
+		    container[s[i]]++;
+		}
+	}
 
+	// If there an element unmatched from string t, return false.
+	// If an element matched, erase key element or decrease by one if multiple.
+	for (int i = 0; i < t.size(); i++) {
+		if (container.find(t[i]) == container.end()) {
+		    return false;
+		} 
+		else {
+		    if (container[t[i]] == 1) {
+				container.erase(t[i]);
+			}
+			else {
+				container[t[i]]--;
+			}
+		}
+	}
+
+	// If container empty after all processes, return true. 
+	if (container.size() == 0) {
+		return true;
+	}
+	else {
+		return false;
+	}
 }
