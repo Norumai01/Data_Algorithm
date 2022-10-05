@@ -49,9 +49,9 @@ bool isAnagram(string s, string t) {
 	// If there's a copy, it will add one to the value of the key element. 
 	for (int i = 0; i < s.size(); i++) {
 		if (container.find(s[i]) == container.end()) {
-		    container.insert(make_pair(s[i], 1));
+			container.insert(make_pair(s[i], 1));
 		} 
-		else {
+	else {
 		    container[s[i]]++;
 		}
 	}
