@@ -22,6 +22,8 @@ public:
 	LinkedList() : head(nullptr) {};
 	~LinkedList();
 	void pushFront(int val);
+	void print();
+	void reverse();
 	void popFront();
 	int maxVal(); // Returns maximum value in list
 	bool isPresent(int val); // Returns true if val is present in list
@@ -70,6 +72,28 @@ int LinkedList::maxVal() {
 	return max;
 }
 
+void LinkedList::print() {
+	ListNode* n = head;
+	while (n != nullptr) {
+		std::cout << n->val << " ";
+		n = n->next;
+	}
+}
+
+void LinkedList::reverse() {
+	ListNode* curr = head;
+	ListNode* prev = nullptr;
+	ListNode* next = nullptr;
+
+	while (curr != nullptr) {
+		next = curr->next;
+		curr->next = prev;
+		prev = curr;
+		curr = next;
+	}
+	head = prev; 
+}
+
 LinkedList::~LinkedList() {
 	while (head != nullptr) popFront();
 }
@@ -99,4 +123,8 @@ int main() {
 
 	std::cout << "Maximum list value: " << lst.maxVal() << std::endl;
 
+	lst.print();
+	lst.reverse();
+	std::cout << std::endl;
+	lst.print();
 }
