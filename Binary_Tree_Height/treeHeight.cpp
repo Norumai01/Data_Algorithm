@@ -20,19 +20,14 @@ struct TreeNode {
 
 
 int treeHeight(TreeNode *p) {
-// Your code here
-	if (p = nullptr) {
+	// Your code here
+	if (p == nullptr) {
 		return 0;
 	}
 	else {
 		int leftHei = treeHeight(p->left);
 		int rightHei = treeHeight(p->right);
-		if (leftHei > rightHei) {
-			return leftHei + 1;
-		}
-		else {
-			return rightHei + 1;
-		}
+		return std::max(leftHei,rightHei) + 1;
 	}
 }
 
