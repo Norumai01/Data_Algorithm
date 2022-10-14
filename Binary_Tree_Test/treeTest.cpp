@@ -12,7 +12,7 @@ struct TreeNode {
 	TreeNode(int x, TreeNode *left, TreeNode *right) : ele{x}, left{left}, right{right}, parent{nullptr} {}
 };
 
-
+// Maximum Depth or Height of Binary Tree
 int treeHeight(TreeNode *p) {
 	// Your code here
 	if (p == nullptr) {
@@ -25,6 +25,7 @@ int treeHeight(TreeNode *p) {
 	}
 }
 
+// Printing binary tree through InOrder Traversal. 
 void printInOrder(TreeNode *p) {
     if (p == nullptr) {
         return;
