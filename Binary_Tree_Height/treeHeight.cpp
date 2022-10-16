@@ -21,9 +21,11 @@ struct TreeNode {
 
 int treeHeight(TreeNode *p) {
 	// Your code here
+	// Returns zero if elements on tree.
 	if (p == nullptr) {
 		return 0;
 	}
+	// Traversel counter, takes the greatest height and return plus 1.
 	else {
 		int leftHei = treeHeight(p->left);
 		int rightHei = treeHeight(p->right);
