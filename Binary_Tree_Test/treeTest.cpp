@@ -26,6 +26,7 @@ int treeHeight(TreeNode *p) {
 }
 
 // Printing binary tree through InOrder Traversal. 
+// Visit left subtree, root, then right subtree.
 void printInOrder(TreeNode *p) {
     if (p == nullptr) {
         return;
@@ -35,6 +36,7 @@ void printInOrder(TreeNode *p) {
     printInOrder(p->right);
 }
 
+// Visit root, left subtree, then right subtree.
 void printPreOrder(TreeNode *p) {
 	if (p == nullptr) {
 		return;
@@ -44,6 +46,7 @@ void printPreOrder(TreeNode *p) {
 	printPreOrder(p->right);
 }
 
+// Visit left subtree, right subtree, then root. 
 void printPostOrder(TreeNode *p) {
 	if (p == nullptr) {
 		return;
