@@ -26,6 +26,7 @@ int treeHeight(TreeNode *p) {
 }
 
 // Printing binary tree through InOrder Traversal. 
+// Visit left subtree, root, then right subtree.
 void printInOrder(TreeNode *p) {
     if (p == nullptr) {
         return;
@@ -33,6 +34,26 @@ void printInOrder(TreeNode *p) {
     printInOrder(p->left);
     std::cout << p->ele << " ";
     printInOrder(p->right);
+}
+
+// Visit root, left subtree, then right subtree.
+void printPreOrder(TreeNode *p) {
+	if (p == nullptr) {
+		return;
+	}
+	std::cout << p->ele << " ";
+	printPreOrder(p->left);
+	printPreOrder(p->right);
+}
+
+// Visit left subtree, right subtree, then root. 
+void printPostOrder(TreeNode *p) {
+	if (p == nullptr) {
+		return;
+	}
+	printPostOrder(p->left);
+	printPostOrder(p->right);
+	std::cout << p->ele << " ";
 }
 
 
@@ -50,6 +71,12 @@ int main() {
 	std::cout << "InOrder traversal: ";
 	printInOrder(&t7);
 	std::cout << std::endl;
+	std::cout << "PreOrder traversal: ";
+	printPreOrder(&t7);
+	std::cout << std::endl;
+	std::cout << "PostOrder traversal: ";
+	printPostOrder(&t7);
+	std::cout << std::endl << std::endl;
 
 	// Test 2
 
@@ -61,5 +88,11 @@ int main() {
 	std::cout << "Tree Height is: " << treeHeight(&n1) << std::endl; // 4
     std::cout << "InOrder traversal: ";
     printInOrder(&n1);
+    std::cout << std::endl;
+    std::cout << "PreOrder traversal: ";
+    printPreOrder(&n1);
+    std::cout << std::endl;
+    std::cout << "PostOrder traversal: ";
+    printPostOrder(&n1);
     std::cout << std::endl;
 }
