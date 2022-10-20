@@ -31,11 +31,23 @@ std::vector<double> findMedian(std::vector<int>& data) {
     
     // Your code here 
     // Please comment out any debugging print outs
+    for (int i = 0; i < data.size(); i++) {
+        max_heap.push(data[i]);
+        min_heap.push(max_heap.top());
+        max_heap.pop();
+        if (min_heap.size() > max_heap.size()) {
+            max_heap.push(min_heap.top());
+            min_heap.pop();
+        }
 
-
-
-
-
+        if (max_heap.size() > min_heap.size()) {
+            res.push_back(max_heap.top());
+        }
+        else {
+            res.push_back( (max_heap.top() + min_heap.top()) / 2.0);
+        }
+    }
+    return res;
 }
 
 int main() {
