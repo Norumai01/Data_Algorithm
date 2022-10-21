@@ -39,7 +39,6 @@ std::vector<double> findMedian(std::vector<int>& data) {
             max_heap.push(min_heap.top());
             min_heap.pop();
         }
-
         if (max_heap.size() > min_heap.size()) {
             res.push_back(max_heap.top());
         }
