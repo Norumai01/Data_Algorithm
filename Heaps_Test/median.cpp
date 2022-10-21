@@ -39,21 +39,20 @@ std::vector<double> findMedian(std::vector<int>& data) {
             max_heap.push(min_heap.top());
             min_heap.pop();
         }
-        //printQueue(max_heap);
-        //printQueue(min_heap);
-
         if (max_heap.size() > min_heap.size()) {
             res.push_back(max_heap.top());
         }
         else {
             res.push_back( (max_heap.top() + min_heap.top()) / 2.0);
         }
+        printQueue(max_heap);
+        printQueue(min_heap);
     }
     return res;
 }
 
 int main() {
-	std::vector<int> data_stream = {5, 42, 29, 85, 95, 99, 2, 15};
+	std::vector<int> data_stream = {5, 42, 29, 85, 95, 99, 2, 15, 1};
     // i-th element of median_stream is median of first i elements of input 
 	std::vector<double> median_stream = findMedian(data_stream) ;
     for (auto ele: median_stream) {

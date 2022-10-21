@@ -26,19 +26,21 @@ template<typename T> void printQueue(T& q) {
 std::vector<double> findMedian(std::vector<int>& data) {
 	std::priority_queue<int> max_heap; // STL Max-heap
 	std::priority_queue<int, std::vector<int>, std::greater<int> > min_heap; // STL Min-heap
-    
 	std::vector<double> res;
     
-    // Your code here 
-    // Please comment out any debugging print outs
     for (int i = 0; i < data.size(); i++) {
+        // Priority queue will order it based on min and max heap.
         max_heap.push(data[i]);
         min_heap.push(max_heap.top());
         max_heap.pop();
+        // Balance the heaps with the greater half in min.
+        // Lesser half is in max. 
         if (min_heap.size() > max_heap.size()) {
             max_heap.push(min_heap.top());
             min_heap.pop();
         }
+        // Push the max top as the median if stream is odd.
+        // If stream is even, take both heaps top and divided 2. 
         if (max_heap.size() > min_heap.size()) {
             res.push_back(max_heap.top());
         }
