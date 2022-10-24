@@ -52,7 +52,7 @@ std::vector<double> findMedian(std::vector<int>& data) {
 }
 
 int main() {
-	std::vector<int> data_stream = {5, 42, 29, 85, 95, 99, 2, 15, 1};
+	std::vector<int> data_stream = {5, 42, 29, 85, 95, 99, 2, 15};
     // i-th element of median_stream is median of first i elements of input 
 	std::vector<double> median_stream = findMedian(data_stream) ;
     for (auto ele: median_stream) {
