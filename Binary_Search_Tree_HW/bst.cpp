@@ -65,10 +65,20 @@ void BinarySearchTree::insertHelper(Node* parent, Node* new_node)
 }
 
 std::string BinarySearchTree::find(int key) const {
-// Your code here
-
-
-
+   // Your code here
+   Node* temp = root;  
+   while(temp != nullptr) {
+      if (temp->key == key) {
+         return temp->val;
+      }
+      else if (temp->key > key) {
+         temp = temp->left;
+      }
+      else {
+         temp = temp->right;
+      }
+   }
+   return "";
 }
 
 void BinarySearchTree::printInOrder() const {
