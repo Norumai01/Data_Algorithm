@@ -28,7 +28,7 @@ private:
         Node* root;
         void insertHelper(Node* parent, Node* new_node);
         void printInOrderHelper(Node *n) const; //Helper for recursive implemenation of printInroder()
-        std::string findHelper(Node *n, int key) const;
+        std::string findHelper(Node *n, int key) const; // Helper for recursive find(). 
 };
 
    
@@ -69,23 +69,24 @@ std::string BinarySearchTree::find(int key) const {
    // Your code here
    Node* temp = root;
    if (temp == nullptr) {
-       return "";
+      return "";
    }
    return findHelper(temp, key);
 }
 
 std::string BinarySearchTree::findHelper(Node* n, int key) const {
-    //std::cout << n->key << std::endl;
-    if (n->key == key) {
-        return n->val;
-    }
-    else if (n->key > key) {
-        return findHelper(n->left, key);
-    }
-    else {
-        return findHelper(n->right, key);
-    }
-    return "";
+   if (n == nullptr) {
+      return "";
+   }
+   if (n->key == key) {
+      return n->val;
+   }
+   else if (n->key > key) {
+      return findHelper(n->left, key);
+   }
+   else {
+      return findHelper(n->right, key);
+   }
 }
 
 void BinarySearchTree::printInOrder() const {
@@ -121,17 +122,15 @@ int main()
    std::string val = t.find(ele);
    if (val == "" ) {
 	   std::cout << ele << " does not exist in tree" << std::endl;
-   } 
-   else {
+   } else {
 	   std::cout << ele << " : " << val << std::endl;
    }
    ele = 0;
    val = t.find(ele);
    if (val == "" ) {
 	   std::cout << ele << " does not exist in tree" << std::endl;
-   } 
-   else {
+   } else {
 	   std::cout << ele << " : " << val << std::endl;
    }
-   return 0;
+    return 0;
 }
