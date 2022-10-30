@@ -68,23 +68,23 @@ void BinarySearchTree::insertHelper(Node* parent, Node* new_node)
 std::string BinarySearchTree::find(int key) const {
    // Your code here
    Node* temp = root;
-   if (temp == nullptr) {
+   if (temp == nullptr) {  // If no elements is presented.
       return "";
    }
-   return findHelper(temp, key);
+   return findHelper(temp, key);  // Recursive function helper. 
 }
 
 std::string BinarySearchTree::findHelper(Node* n, int key) const {
-   if (n == nullptr) {
+   if (n == nullptr) {  // Return "", if tree ends at null.
       return "";
    }
-   if (n->key == key) {
+   if (n->key == key) {  // If node's key matches, return value of the node.
       return n->val;
    }
-   else if (n->key > key) {
+   else if (n->key > key) {  // If node's key is greater, move tree left.
       return findHelper(n->left, key);
    }
-   else {
+   else {  // If node's key is lesser, move tree right.
       return findHelper(n->right, key);
    }
 }

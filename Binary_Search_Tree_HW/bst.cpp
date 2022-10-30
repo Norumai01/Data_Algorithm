@@ -68,17 +68,17 @@ std::string BinarySearchTree::find(int key) const {
    // Your code here
    Node* temp = root;  
    while(temp != nullptr) {
-      if (temp->key == key) {
+      if (temp->key == key) {  // Return the key value, if key matches. 
          return temp->val;
       }
-      else if (temp->key > key) {
+      else if (temp->key > key) {  // Move tree to the left for greater keys.
          temp = temp->left;
       }
-      else {
+      else {  // Move tree to the right for lesser keys. 
          temp = temp->right;
       }
    }
-   return "";
+   return "";  // If tree ends at null, return "".
 }
 
 void BinarySearchTree::printInOrder() const {
