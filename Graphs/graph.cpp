@@ -29,16 +29,59 @@ void printQ(queue<int> qcopy);
 // DFS - returns list of nodes in DFS order starting from source vertex
 vector<int> DFS(const adjlist& alist, int source) {
 // Your code here
+    vector<int> dfslist;
+    // Vertices visited, initially none.
+    vector<bool> visited(alist.size(), false);
+
+    // Using a DFS helper function.
+    DFSHelper(alist, dfslist, visited, source);
+    return dfslist;
 
 }
 
 void DFSHelper(const adjlist& alist, vector<int>& dfslist, vector<bool>& visited, int source) {
 // Your code here
+    // Mark current vertex as visited.
+    visited[source] = true;
+    dfslist.push_back(source);
+
+    for (auto adjecent: alist[source]) {
+        // Check if a vertex had not been visited and recursion.
+        if (!visited[adjecent.first]) {
+            DFSHelper(alist, dfslist, visited, adjecent.first);
+        }
+    }
 }
 
 // BFS - returns list of nodes in BFS order starting from source vertex
 vector<int> BFS(const adjlist& alist, int source) {
 // Your code here
+    // Vertices visited, initially none.
+    vector<bool> visited(alist.size(), false);
+    // Return bfslist.
+    vector<int> bfslist;
+    // Created a Queue for BFS.
+    queue<int> list;
+    
+    // Push source into list.
+    // Mark as visited.
+    list.push(source);
+    visited[source] = true;
+    
+    while(!list.empty()) {
+        int curr = list.front();
+        bfslist.push_back(curr);
+        list.pop();
+        
+        for (auto adjecent: alist[curr]) {
+            // Check if vertex is not visited.
+            if(!visited[adjecent.first]) {
+                visited[adjecent.first] = true;  // Mark visited.
+                list.push(adjecent.first);  // Push vertex into queue.
+            }
+        }
+    }
+    return bfslist;
 }
 
 
