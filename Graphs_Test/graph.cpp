@@ -11,6 +11,7 @@ Note that there is more than one right order of BFS and DFS vertices
 #include <unordered_map>
 #include <set>
 #include <queue>
+#include <stack>
 
 using namespace std;
 
@@ -22,6 +23,8 @@ adjlist makeGraph(ifstream& ifs);
 void printGraph(const adjlist& alist);
 vector<int> BFS(const adjlist& alist, int source); // Return vertices in BFS order
 vector<int> DFS(const adjlist& alist, int source);  // Return vertices in DFS order
+vector<int> topologicalSort(const adjlist& alist, int source); // Return vertices in topological order.
+void topoHelper(const adjlist& alist, vector<int>& topolist, vector<bool>& visited, stack<int>& stack, int source);
 void DFSHelper(const adjlist& alist, vector<int>& dfslist, vector<bool>& visited, int source);
 void printQ(queue<int> qcopy);
 
@@ -84,7 +87,34 @@ vector<int> BFS(const adjlist& alist, int source) {
     return bfslist;
 }
 
+vector<int> topologicalSort(const adjlist& alist, int source) {
+    vector<int> topolist; // Return topolist.
+    vector<bool> visited(alist.size(), false); // Vertices visited, initially none.
+    stack<int> stack; // Push to the stack, then return. 
 
+    // Called a topoHelper function for recursive. 
+    topoHelper(alist, topolist, visited, stack, source);
+    // Empty stack and push them into topolist.
+    while (!stack.empty()) {
+        topolist.push_back(stack.top());
+        stack.pop();
+    }
+    return topolist;
+}
+
+void topoHelper(const adjlist& alist, vector<int>& topolist, vector<bool>& visited, stack<int>& stack, int source) {
+    // Mark current node as visited
+    visited[source] = true;
+    
+    // Recur to all vertices, if a vertex does not exist yet.
+    for (auto adjecent: alist[source]) {
+        if (!visited[adjecent.first]) {
+            topoHelper(alist, topolist, visited, stack, adjecent.first);
+        }
+    }
+    // Push current vertex to stack.
+    stack.push(source);
+}
 
 
 // Reads a csv graph from file and returns an adjacency list
@@ -152,6 +182,10 @@ int main() {
         cout << ele << " ";
     cout << endl;
 
+    vector<int> topolist = topologicalSort(alist, 0);
+    for (auto& ele : topolist) // Prints 0 2 1 4 3 5. Other answers possible 
+        cout << ele << " ";
+    cout << endl;
 }
 
 
