@@ -23,6 +23,7 @@ adjlist makeGraph(ifstream& ifs);
 void printGraph(const adjlist& alist);
 vector<int> BFS(const adjlist& alist, int source); // Return vertices in BFS order
 vector<int> DFS(const adjlist& alist, int source);  // Return vertices in DFS order
+vector<int> DFS_Iter(const adjlist& alist, int source); // Return vertices in DFS, iteratively.
 vector<int> topologicalSort(const adjlist& alist, int source); // Return vertices in topological order.
 void topoHelper(const adjlist& alist, vector<int>& topolist, vector<bool>& visited, stack<int>& stack, int source);
 void DFSHelper(const adjlist& alist, vector<int>& dfslist, vector<bool>& visited, int source);
@@ -56,6 +57,29 @@ void DFSHelper(const adjlist& alist, vector<int>& dfslist, vector<bool>& visited
     }
 }
 
+// DFS - returns list of nodes in DFS order but iteratively. Testing
+vector<int> DFS_Iter(const adjlist& alist, int source) {
+    vector<int> dfslist;
+    vector<bool> visited(alist.size(), false); // Vertices visited, initially none.
+    stack<int> stack; // stack for DFS.
+
+    visited[source] = true;
+    stack.push(source);
+
+    while(!stack.empty()) {
+        int curr = stack.top();
+        dfslist.push_back(curr);
+        stack.pop();
+        for (auto adjecent: alist[curr]) {
+            if (!visited[adjecent.first]) {
+                visited[adjecent.first] = true;
+                stack.push(adjecent.first);
+            }
+        }
+    }
+    return dfslist;
+}
+
 // BFS - returns list of nodes in BFS order starting from source vertex
 vector<int> BFS(const adjlist& alist, int source) {
 // Your code here
@@ -87,6 +111,7 @@ vector<int> BFS(const adjlist& alist, int source) {
     return bfslist;
 }
 
+// Topological Sorting - return list of nodes in topological sorting. 
 vector<int> topologicalSort(const adjlist& alist, int source) {
     vector<int> topolist; // Return topolist.
     vector<bool> visited(alist.size(), false); // Vertices visited, initially none.
@@ -174,6 +199,11 @@ int main() {
     printGraph(alist);
     vector<int> dfslist = DFS(alist, 0);
     for (auto& ele : dfslist) // Prints 0 2 4 5 1 3. Other answers possible 
+        cout << ele << " ";
+    cout << endl;
+
+    vector<int> dfslist_Iter = DFS_Iter(alist, 0);
+    for (auto& ele : dfslist_Iter) // Prints 0 2 4 5 1 3. Other answers possible 
         cout << ele << " ";
     cout << endl;
     
