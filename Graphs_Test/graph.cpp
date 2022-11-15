@@ -203,7 +203,7 @@ int main() {
     cout << endl;
 
     vector<int> dfslist_Iter = DFS_Iter(alist, 0);
-    for (auto& ele : dfslist_Iter) // Prints 0 2 4 5 1 3. Other answers possible 
+    for (auto& ele : dfslist_Iter)  
         cout << ele << " ";
     cout << endl;
     
@@ -213,7 +213,7 @@ int main() {
     cout << endl;
 
     vector<int> topolist = topologicalSort(alist, 0);
-    for (auto& ele : topolist) // Prints 0 2 1 4 3 5. Other answers possible 
+    for (auto& ele : topolist)  
         cout << ele << " ";
     cout << endl;
 }
