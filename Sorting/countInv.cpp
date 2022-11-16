@@ -20,7 +20,32 @@ https://www.youtube.com/watch?v=I6ygiW8xN7Y
 
 int mergeInv(std::vector<int>& nums, std::vector<int>& left, std::vector<int>& right) {
 // Your code here
+    int mid = nums.size() / 2;
+    int i = 0, j = 0, k = 0;
+    int count = 0;
 
+    // Checks between the left and right vector.
+    while(i < left.size() && j < right.size()) {
+        // No inversion swap, if left element is greater than right.
+        if (left[i] <= right[j]) {
+            nums[k++] = left[i++];
+        }
+        // Inversion swap and counting. 
+        else {
+            nums[k++] = right[j++];
+            
+            count += mid;
+        }
+    }
+    // Copy the remaining elements of left into vector.
+    while (i < left.size()) {
+        nums[k++] = left[i++];
+    }
+    // Copy the remaining elements of right into vector. 
+    while (j < right.size()) {
+        nums[k++] = right[j++];
+    }
+    return count;
 }
 
 int countInv(std::vector<int>& nums) {
