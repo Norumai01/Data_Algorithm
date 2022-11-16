@@ -21,7 +21,6 @@ https://www.youtube.com/watch?v=I6ygiW8xN7Y
 int mergeInv(std::vector<int>& nums, std::vector<int>& left, std::vector<int>& right) {
 // Your code here
 
-
 }
 
 int countInv(std::vector<int>& nums) {
