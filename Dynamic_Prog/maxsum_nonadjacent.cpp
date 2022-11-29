@@ -23,9 +23,11 @@ int maxSum(vector<int>& nums) {
 		// Current max excludes i.
 		excl_new = max(incl, excl);
 		
-		incl = excl + nums[i];
+		// Incl is the current max sum and excl is the previous. 
+		incl = excl + nums[i]; 
 		excl = excl_new;
 	}
+	// Returns which incl or excl is the greatest. 
 	return max(incl,excl);
 }
 
