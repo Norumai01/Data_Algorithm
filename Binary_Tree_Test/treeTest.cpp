@@ -25,6 +25,18 @@ int treeHeight(TreeNode *p) {
 	}
 }
 
+// Return the total amount of nodes on the tree.
+int nodeCount(TreeNode *p) {
+	if (p == nullptr) {
+		return 0;
+	}
+	else {
+		int leftnode = nodeCount(p->left);
+		int rightnode = nodeCount(p->right);
+		return leftnode + rightnode + 1;
+	}
+}
+
 // Printing binary tree through InOrder Traversal. 
 // Visit left subtree, root, then right subtree.
 void printInOrder(TreeNode *p) {
@@ -68,6 +80,7 @@ int main() {
 	TreeNode t7(1, &t5, &t6); // root
 
 	std::cout << "Tree Height is: " << treeHeight(&t7) << std::endl; // 3
+	std::cout << "Total node is: " << nodeCount(&t7) << std::endl; // 6
 	std::cout << "InOrder traversal: ";
 	printInOrder(&t7);
 	std::cout << std::endl;
@@ -86,6 +99,7 @@ int main() {
 	TreeNode n1(1, nullptr, &n2); // root
 
 	std::cout << "Tree Height is: " << treeHeight(&n1) << std::endl; // 4
+	std::cout << "Total node is: " << nodeCount(&n1) << std::endl; // 4
     std::cout << "InOrder traversal: ";
     printInOrder(&n1);
     std::cout << std::endl;

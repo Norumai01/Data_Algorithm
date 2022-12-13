@@ -23,7 +23,8 @@ public:
        BinarySearchTree(): root{nullptr} {}
        void insert(int key, std::string val); // Recursive
        void printInOrder() const; // Prints keys in-order. Recursive
-	   std::string find(int key) const; //Returns value if node is present, else return empty string. Iterative
+	    std::string find(int key) const; //Returns value if node is present, else return empty string. Iterative
+       int FindMin() const;
 private:
         Node* root;
         void insertHelper(Node* parent, Node* new_node);
@@ -89,6 +90,19 @@ std::string BinarySearchTree::findHelper(Node* n, int key) const {
    }
 }
 
+int BinarySearchTree::FindMin() const {
+   Node* temp = root;
+   int min = temp->key;
+   
+   while (temp != nullptr) {
+      if (temp->key < min) {
+         min = temp->key;
+      }
+      temp = temp->left;
+   }
+   return min; 
+}
+
 void BinarySearchTree::printInOrder() const {
 	if (root == nullptr) {
 		std::cout << std::endl;
@@ -132,5 +146,7 @@ int main()
    } else {
 	   std::cout << ele << " : " << val << std::endl;
    }
+   val = t.find(t.FindMin());
+   std::cout << "The minimum key is "<< t.FindMin() << " with a key value of " << val << "." << std::endl;
    return 0;
 }
